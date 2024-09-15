@@ -22,13 +22,11 @@ export default function MealItem({ title, slug, image, summary, creator }) {
       <div className='mt-4'>
         <p className='w-80'>Summary: {summary}</p>
         <div className='mt-4'>
-          <Link href={`/meals/${slug}`}>
-            <button
-              
-              className='px-6 py-2 bg-[#f54329] text-white rounded-full border border-black shadow-xl'
-            
-              > View Details
-            </button>
+          <Link
+            href={`/meals/${slug}`}
+            className='px-6 py-2 bg-[#f54329] text-white rounded-full border border-black shadow-xl'
+          >
+            View Details
           </Link>
         </div>
       </div>

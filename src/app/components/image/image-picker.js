@@ -42,6 +42,7 @@ export default function ImagePicker({ label, name }) {
               alt='Image selected by user'
               width={200}
               height={200}
+              className='mb-4'
             />
           )}
         </div>

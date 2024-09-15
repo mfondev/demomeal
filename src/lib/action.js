@@ -1,3 +1,39 @@
+// 'use server'
+
+// import { redirect } from 'next/navigation'
+// import { saveMeal } from './meals'
+
+// export async function shareMeal(formData) {
+//   function isInvalidText(text) {
+//     return !text || text.trim() === ''
+//   }
+
+//   const meal = {
+//     title: formData.get('title'),
+//     summary: formData.get('summary'),
+//     instructions: formData.get('instructions'),
+//     image: formData.get('image'),
+//     creator: formData.get('name'),
+//     creator_email: formData.get('email'),
+//   }
+
+//   if (
+//     isInvalidText(meal.title) ||
+//     isInvalidText(meal.instructions) ||
+//     isInvalidText(meal.summary) ||
+//     isInvalidText(meal.creator) ||
+//     isInvalidText(meal.creator_email) ||
+//     !meal.creator_email.include('@') ||
+//     !meal.image ||
+//     meal.image.size === 0
+//   ) {
+//     throw new Error('Invalid input')
+//   }
+
+//   await saveMeal(meal)
+//   redirect('/meals')
+// }
+
 'use server'
 
 import { redirect } from 'next/navigation'
@@ -23,13 +59,14 @@ export async function shareMeal(prevState, formData) {
     isInvalidText(meal.instructions) ||
     isInvalidText(meal.summary) ||
     isInvalidText(meal.creator) ||
-    isInvalidText(meal.creator_email) || !meal.creator_email.include('@')
-    || !meal.image || meal.image.size === 0 
+    isInvalidText(meal.creator_email) ||
+    !meal.creator_email.includes('@') ||
+    !meal.image ||
+    meal.image.size === 0
   ) {
-   // throw new Error('Invalid input')
-   return {
-    message: 'Invalid Input'
-   }
+    return {
+      message: 'Invalid Input, please fill forms ',
+    }
   }
 
   await saveMeal(meal)
