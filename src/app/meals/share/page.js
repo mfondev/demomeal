@@ -20,7 +20,7 @@ export default function ShareMealPage() {
       </header>
 
       <main>
-        <form action={formAction} className='max-w-lg mx-auto space-y-6'>
+        <form action={formAction} className='max-w-lg mx-auto space-y-6 p-3 sm:p-0'>
           <h2 className='text-3xl font-bold text-center mb-6'>
             Submit Your Recipe
           </h2>

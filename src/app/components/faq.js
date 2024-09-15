@@ -8,7 +8,7 @@ export default function Faq() {
       <Accordion
         type='single'
         collapsible
-        className='w-full lg:w-1/2 mx-auto my-10'
+        className='w-full lg:w-1/2 mx-auto my-10 p-3 sm:p-0'
       >
         {FAQs.map((faq, index) => (
           <AccordionItem key={index} value={`item-${index + 1}`}>

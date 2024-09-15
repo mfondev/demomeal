@@ -9,11 +9,7 @@ export const FAQs = [
     answer:
       "To share your own recipe, navigate to the 'Share Recipe' section, fill in the recipe details such as ingredients, instructions, and photos, then submit it for others to view.",
   },
-  {
-    question: "How do I interact with other users' recipes?",
-    answer:
-      'You can leave comments, rate recipes, and share them with others through social media or direct links.',
-  },
+ 
   {
     question: 'How do I mark a recipe as a favorite?',
     answer:

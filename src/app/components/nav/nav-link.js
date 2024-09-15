@@ -11,7 +11,7 @@ export default function NavLink() {
     <div className='flex items-center gap-4'>
       <Link
         href='/meals'
-        className={`text-2xl ${
+        className={`text-sm sm:text-2xl ${
           path.startsWith('/meals') ? 'text-[#f54329]' : 'text-black '
         }`}
       >
@@ -19,7 +19,7 @@ export default function NavLink() {
       </Link>
       <Link
         href='/community'
-        className={`text-2xl ${
+        className={`text-sm sm:text-2xl ${
           path.startsWith('/community') ? 'text-[#f54329]' : 'text-black'
         }`}
       >

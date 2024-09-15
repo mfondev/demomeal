@@ -16,7 +16,7 @@ body{
 
   @layer utilities {
     .slideshow {
-      @apply absolute left-10  w-80 h-80 object-cover transition-opacity duration-1000 ease-in-out ;
+      @apply absolute left-0  w-80 h-80 object-cover transition-opacity duration-1000 ease-in-out ;
     }
     .slideshow-active {
       @apply opacity-100 scale-100 translate-x-0 rotate-0 z-10;

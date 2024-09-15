@@ -39,21 +39,6 @@ export default function ImageSlider() {
    }, [])
   return (
     <>
-      {/* <div className='mt-8 relative'>
-        {images.map((image, index) => (
-          <Image
-            key={index}
-            src={image.image}
-            alt={image.alt}
-            className={`slideshow ${
-              index === currentImageIndex
-                ? 'slideshow-active'
-                : 'slideshow-hidden'
-            }`}
-          />
-        ))}
-      </div> */}
-      {/* <h1>hey</h1> */}
       <div className='mt-8 relative h-80 w-80'>
         {images.map((image, index) => (
           <Image
