@@ -7,7 +7,6 @@ const kanit = Kanit({
   weight: ['400', '700'],
 })
 
-
 export const metadata = {
   title: 'Tasty recipe',
   description: 'a tasty recipe app',

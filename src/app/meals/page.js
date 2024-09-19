@@ -3,6 +3,7 @@ import Meals from './Loading/Meals'
 import { Suspense } from 'react'
 import MainHeader from '../components/header/main-header'
 
+
 export const metadata = {
   title: 'All meals',
   description: 'Meals shared by vibrant community',

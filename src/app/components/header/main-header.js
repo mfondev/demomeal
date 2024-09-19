@@ -1,7 +1,6 @@
 import React from 'react'
 import Link from 'next/link'
 
-
 export default function MainHeader() {
   return (
     <header className='flex flex-col items-center justify-center  text-center mb-8'>

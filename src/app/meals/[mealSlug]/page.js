@@ -4,7 +4,7 @@ import { notFound } from 'next/navigation'
 import Image from 'next/image'
 
 export async function generateMetadata({ params }) {
-  const meal = getMeal(params.mealSlug)
+  const meal = await getMeal(params.mealSlug)
 
   if (!meal) {
     notFound()
@@ -15,10 +15,13 @@ export async function generateMetadata({ params }) {
     description: meal.summary,
   }
 }
-export default function MealDetail({ params }) {
-  const meal = getMeal(params.mealSlug)
+export default async function MealDetail({ params }) {
+  const meal = await getMeal(params.mealSlug)
   meal.instructions = meal.instructions.replace(/\n/g, '<br />')
 
+  console.log(meal);
+  console.log('mounted');
+  
   if (!meal) {
     notFound()
   }

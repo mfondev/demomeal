@@ -1,17 +1,35 @@
-import sql from 'better-sqlite3'
+import { supabase } from './supabaseClient'
 import slugify from 'slugify'
 import xss from 'xss'
 import fs from 'node:fs'
 
-const db = sql('meals.db')
-
 export const getMeals = async () => {
-  await new Promise((resolve) => setTimeout(resolve, 2000))
-  return db.prepare('SELECT * FROM meals').all()
+  const { data, error } = await supabase
+    .from('meals')
+    .select(
+      'id, slug, title, summary, instructions, creator, creator_email, image'
+    )
+
+  if (error) {
+    console.error('Error fetching meals:', error)
+    return []
+  }
+
+  return data.map((item) => ({
+    ...item,
+    image: item.image.replace(/['"]/g, '').trim(),
+  }))
 }
 
-export const getMeal = (slug) => {
-  return db.prepare('SELECT * FROM meals WHERE slug = ?').get(slug)
+export const getMeal = async (slug) => {
+  const { data, error } = await supabase
+    .from('meals')
+    .select('*')
+    .eq('slug', slug)
+    .single()
+
+  if (error) throw new Error(error.message)
+  return data
 }
 
 export const saveMeal = async (meal) => {
@@ -30,17 +48,18 @@ export const saveMeal = async (meal) => {
   })
 
   meal.image = `/images/${fileName}`
-  db.prepare(`
-    INSERT INTO meals
-    (title,summary,instructions,creator,creator_email,image,slug)
-    VALUES(
-      @title,
-      @summary,
-      @instructions,
-      @creator,
-      @creator_email,
-      @image,
-      @slug
-    )
-    `).run(meal)
+
+  const { error } = await supabase.from('meals').insert([
+    {
+      title: meal.title,
+      summary: meal.summary,
+      instructions: meal.instructions,
+      creator: meal.creator,
+      creator_email: meal.creator_email,
+      image: meal.image,
+      slug: meal.slug,
+    },
+  ])
+
+  if (error) throw new Error(error.message)
 }
